@@ -12,6 +12,8 @@ import BasketScreen from "./screen/basket";
 import { TitleHeader } from "./components/header/title-header";
 import HomeNavigation from "./screen/home";
 import { View } from "react-native";
+import BookingScreen from "./screen/home/booking";
+import CourseDetails from "./screen/home/course-details";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -60,8 +62,19 @@ export default function App() {
           name="SignUp-Verify"
           component={SignUpVerify}
           options={{ headerShown: false }}
+        /> 
+        <Stack.Screen
+          name="jjjjgj"
+          component={BookingScreen}
+          options={{ headerShown: false }}
         />
-        
+        <Stack.Screen
+          name="course-details"
+          component={CourseDetails}
+/>
+
+
+
       </Stack.Navigator>
     </NavigationContainer>
   );

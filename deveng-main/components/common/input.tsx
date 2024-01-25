@@ -158,6 +158,7 @@ const styles = StyleSheet.create({
     width: 350,
   },
   numberInput: {
+    width: 35,
     marginTop: 11,
     padding: 19,
     paddingLeft: 23,

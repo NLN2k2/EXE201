@@ -4,10 +4,24 @@ import { SignInWelcomeLayout } from "../../components/layout/signin-welcome";
 import { TitleInput } from "../../components/common/input";
 import { Spacing } from "../../components/common/spacing";
 import { ContainedButton } from "../../components/common/button";
+import axios from "axios";
 
 const signupLogo = require("../../assets/images/signup-logo.png");
-export default function SignUpPassword({ navigation }: any) {
+
+export default function SignUpPassword({ navigation, route }: any) {
   const [input, setInput] = useState("");
+  const { email, otp } = route.params;  // Corrected line
+
+  const apiUrl = 'https://localhost:7052/api/Authenticate/Register';
+ 
+
+  const navigateToSignin = () => {
+    const response = axios.post(apiUrl + '/' + otp + '?Email=' + email + '&Password=' + input);
+    console.log(response);
+    // Navigate to Login
+    navigation.navigate("Login");
+  };
+
   return (
     <SignInWelcomeLayout paddingTop={100}>
       <View style={{ flex: 0.8 }}>
@@ -25,7 +39,12 @@ export default function SignUpPassword({ navigation }: any) {
           <View>
             <ContainedButton
               onPress={() => {
-                navigation.navigate("SignUp-Verify");
+                // Access email, otp, and input in your logic
+                console.log("Email:", email);
+                console.log("Verification Code (OTP):", otp);
+                console.log("Password:", input);
+                // Perform other actions, e.g., navigate to HomeNavigation
+                navigateToSignin();
               }}
             >
               Next
